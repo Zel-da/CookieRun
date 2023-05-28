@@ -5,25 +5,27 @@ using UnityEngine;
 public class GroundMove : MonoBehaviour
 {
     Vector3 position;
+    GameObject obj;
+    public int speed;
 
     // Start is called before the first frame update
     void Start()
     {
         position = transform.position;
+        obj = GameObject.Find("Player");
+        speed = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        position.x -= 7 * Time.deltaTime;
+        position.x -= 7 * Time.deltaTime * speed;
         transform.position = position;
 
-        if (position.x < 14 || position.x > -14)
+        if (obj.GetComponent<PlayerMove>().Hp < 0)
         {
-            gameObject.SetActive(true);
+            speed = 0;
         }
-        else
-            gameObject.SetActive(false);
 
     }
 }

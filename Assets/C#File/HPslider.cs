@@ -7,9 +7,14 @@ public class HPslider : MonoBehaviour
 {
     public Slider slTimer;
     float fSliderBarTime;
+    GameObject obj;
+    public int speed;
+
     void Start()
     {
         slTimer = GetComponent<Slider>();
+        obj = GameObject.Find("Player");
+        speed = 1;
     }
 
     void Update()
@@ -17,7 +22,8 @@ public class HPslider : MonoBehaviour
         if (slTimer.value > 0.0f)
         {
             // 시간이 변경한 만큼 slider Value 변경을 합니다.
-            slTimer.value -= Time.deltaTime;
+            //slTimer.value -= Time.deltaTime * speed;
+            slTimer.value = obj.GetComponent<PlayerMove>().Hp;
         }
         else
         {

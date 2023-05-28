@@ -14,6 +14,13 @@ public class PlayerMove : MonoBehaviour
     private Vector2 startPosition;
     public Vector2 SlidePosition;
     bool isSlide;
+    public float Hp;
+    AudioSource audiosource;
+    public AudioClip list1;
+    public AudioSource audioSource;
+    public Vector2 playerX;
+    public Vector2 playerY;
+
 
     void Awake()
     {
@@ -22,6 +29,8 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         JumpCount = 2;
         SlideCount = 0;
+        Hp = 100f;
+        audiosource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()
@@ -31,6 +40,8 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+
         Debug.DrawRay(rigid.position, Vector3.down * 1, new Color(0, 1, 0));
 
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
@@ -65,12 +76,11 @@ public class PlayerMove : MonoBehaviour
             
         }
 
-        if (Input.GetButton("Slide"))
+        if (Input.GetButton("Slide") && playerX.y < transform.position.y)
         {
             anim.SetBool("isSlide", true);
             transform.position = SlidePosition;
             isSlide = true;
-            //gameObject.GetComponent<BoxCollider2D>().enabled = true;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             if (SlideCount == 0)
             {
@@ -82,7 +92,6 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("isSlide", false);
             SlideCount = 0;
-            //gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
             
@@ -91,6 +100,27 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = startPosition;
             isSlide = false;
+        }
+
+        if (Hp > 0)
+        {
+            Hp -= Time.deltaTime;
+        }
+        else if(Hp < 0)
+        {
+            anim.SetBool("isGameover", true);
+            sfx.SoundPlay8();
+            audioSource.Stop();
+            StartCoroutine(GameOver1());
+        }
+
+        if(playerY.y > transform.position.y)
+        {
+            Hp = -1;
+            anim.SetBool("isGameover", true);
+            sfx.SoundPlay8();
+            audioSource.Stop();
+            StartCoroutine(GameOver1());
         }
     }
 
@@ -102,6 +132,11 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    IEnumerator GameOver1()
+    {
+        yield return new WaitForSeconds(20.0f);
+    }
+
     //무적시간
     void OnDamaged(Vector2 targetPos)
     {
@@ -110,6 +145,7 @@ public class PlayerMove : MonoBehaviour
         gameObject.layer = 3;
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);//무적시간일 때 플레이어가 투명하게
         sfx.SoundPlay7();
+        Hp -= 10;
 
         Invoke("OffDamaged", 3);
     }

@@ -12,6 +12,7 @@ public class sfx : MonoBehaviour
     public static AudioClip audioClip5;
     public static AudioClip audioClip6;
     public static AudioClip audioClip7;
+    public static AudioClip audioClip8;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class sfx : MonoBehaviour
         audioClip5 = Resources.Load<AudioClip>("ch01jump");
         audioClip6 = Resources.Load<AudioClip>("ch01slide");
         audioClip7 = Resources.Load<AudioClip>("g_obs1");
+        audioClip8 = Resources.Load<AudioClip>("g_end");
     }
 
     // Update is called once per frame
@@ -54,5 +56,10 @@ public class sfx : MonoBehaviour
     public static void SoundPlay7()
     {
         audioSource.PlayOneShot(audioClip7);
+    }
+
+    public static void SoundPlay8()
+    {
+        audioSource.PlayOneShot(audioClip8);
     }
 }
