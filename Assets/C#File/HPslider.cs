@@ -16,6 +16,7 @@ public class HPslider : MonoBehaviour
         slTimer = GetComponent<Slider>();
         obj = GameObject.Find("Player");
         speed = 1;
+        //EndPanel = GameObject.Find("EndPanel");
     }
 
     void Update()

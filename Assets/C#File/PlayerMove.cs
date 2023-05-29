@@ -117,17 +117,21 @@ public class PlayerMove : MonoBehaviour
             
             StartCoroutine(GameOver1());
             
-        }
-
-        if(playerY.y > transform.position.y)
+        }else if (playerY.y > transform.position.y)
         {
             Hp = -1;
             anim.SetBool("isGameover", true);
             gameObject.GetComponent<AudioSource>().enabled = false;
-            
+
             StartCoroutine(GameOver1());
-            
         }
+
+        /*if (!isGameOver)
+        {
+            // 게임 오버 체크를 위한 if문 작성
+            // 그 if문에서 게임오버를 체크했으면 게임오버시 발생하는것들 나오고
+            // isGameOver를 True로 변/
+        }*/
     }
 
     void OnCollisionEnter2D(Collision2D collision)
