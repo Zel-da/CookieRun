@@ -9,6 +9,7 @@ public class HPslider : MonoBehaviour
     float fSliderBarTime;
     GameObject obj;
     public int speed;
+    public GameObject EndPanel;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class HPslider : MonoBehaviour
         else
         {
             Debug.Log("Game Over!");
+            EndPanel.SetActive(true);
         }
     }
 }

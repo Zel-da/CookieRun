@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
     public AudioSource audioSource;
     public Vector2 playerX;
     public Vector2 playerY;
+   
 
 
     void Awake()
@@ -113,8 +114,9 @@ public class PlayerMove : MonoBehaviour
             sfx.SoundPlay8();
             gameObject.GetComponent<AudioSource>().enabled = false;
             audioSource.Stop();
+            
             StartCoroutine(GameOver1());
-            SceneManager.LoadScene("GameResult");
+            
         }
 
         if(playerY.y > transform.position.y)
@@ -122,8 +124,9 @@ public class PlayerMove : MonoBehaviour
             Hp = -1;
             anim.SetBool("isGameover", true);
             gameObject.GetComponent<AudioSource>().enabled = false;
+            
             StartCoroutine(GameOver1());
-            SceneManager.LoadScene("GameResult");
+            
         }
     }
 
