@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -110,17 +111,19 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("isGameover", true);
             sfx.SoundPlay8();
+            gameObject.GetComponent<AudioSource>().enabled = false;
             audioSource.Stop();
             StartCoroutine(GameOver1());
+            SceneManager.LoadScene("GameResult");
         }
 
         if(playerY.y > transform.position.y)
         {
             Hp = -1;
             anim.SetBool("isGameover", true);
-            sfx.SoundPlay8();
-            audioSource.Stop();
+            gameObject.GetComponent<AudioSource>().enabled = false;
             StartCoroutine(GameOver1());
+            SceneManager.LoadScene("GameResult");
         }
     }
 
@@ -134,7 +137,8 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator GameOver1()
     {
-        yield return new WaitForSeconds(20.0f);
+        sfx.SoundPlay8();
+        yield return new WaitForSeconds(5.0f);
     }
 
     //무적시간

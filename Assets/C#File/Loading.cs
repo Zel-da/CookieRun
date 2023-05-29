@@ -13,7 +13,7 @@ public class Loading : MonoBehaviour
 
         if (this.time > 3f)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("GamePlay");
         }
     }
 }

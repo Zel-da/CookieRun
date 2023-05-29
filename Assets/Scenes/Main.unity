@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cd818374cbd486b8141590f0ea9b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: 
+  SceneToLoad: Loading
 --- !u!4 &204993480
 Transform:
   m_ObjectHideFlags: 0
@@ -440,10 +440,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1223928863}
+  - component: {fileID: 1223928868}
   - component: {fileID: 1223928867}
   - component: {fileID: 1223928866}
   - component: {fileID: 1223928865}
-  - component: {fileID: 1223928868}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1223928868}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Title, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223928862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1140f0c83ce24402c95440f4a8d1722a, type: 3}
+  m_Script: {fileID: 11500000, guid: 39cd818374cbd486b8141590f0ea9b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: Loading
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -423415636, guid: c0719a90385854b6e8d6123b2a27b83c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3635025948bb54f6cbe6b413bc44233f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
